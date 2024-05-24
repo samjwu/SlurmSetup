@@ -1,0 +1,10 @@
+packages:
+  - git
+  - gcc
+  - make
+  - ruby
+  - ruby-dev
+  - libpam0g-dev
+  - libmysqlclient-dev
+  - build-essential
+  - libssl-dev
