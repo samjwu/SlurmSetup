@@ -1,17 +1,9 @@
-- name: Install prerequisite packages for SLURM from configuration file
-  hosts: staging.ini
-  become: yes
+- name: Update the apt cache
+  apt:
+    update_cache: yes
 
-  vars_files:
-    - ../vars/prereqs.yml
-
-  tasks:
-    - name: Update apt cache
-      apt:
-        update_cache: yes
-
-    - name: Install SLURM prerequisites
-      apt:
-        name: "{{ packages }}"
-        state: present
-        update_cache: yes
+- name: Install prerequisite packages for SLURM
+  apt:
+    name: "{{ packages }}"
+    state: present
+    update_cache: yes
