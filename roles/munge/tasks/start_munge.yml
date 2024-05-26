@@ -1,0 +1,9 @@
+- name: Enable MUNGE on boot
+  systemd:
+    name: munge
+    enabled: yes
+
+- name: Start MUNGE
+  systemd:
+    name: munge
+    state: started
