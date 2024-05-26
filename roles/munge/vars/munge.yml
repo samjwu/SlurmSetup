@@ -1,0 +1,4 @@
+packages:
+  - libmunge-dev
+  - libmunge2
+  - munge

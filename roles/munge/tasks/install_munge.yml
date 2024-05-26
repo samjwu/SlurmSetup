@@ -1,0 +1,9 @@
+- name: Update the apt cache
+  apt:
+    update_cache: yes
+
+- name: Install MUNGE
+  apt:
+    name: "{{ packages }}"
+    state: present
+    update_cache: yes
