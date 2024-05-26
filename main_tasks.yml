@@ -1,0 +1,22 @@
+- name: Install prerequisite packages for SLURM
+  hosts: slurm_nodes
+  become: yes
+
+  tasks:
+    - name: Install SLURM prerequisites
+      include_tasks: roles/prereqs/install_prereqs.yml
+
+    - name: Install MUNGE
+      include_tasks: roles/munge/install_munge.yml
+
+    - name: Start MUNGE
+      include_tasks: roles/munge/start_munge.yml
+
+    - name: Test MUNGE
+      include_tasks: roles/munge/test_munge.yml
+
+    - name: Install MariaDB
+      include_tasks: roles/mariadb/install_mariadb.yml
+
+    - name: Start MySQL
+      include_tasks: roles/mariadb/start_mysql.yml

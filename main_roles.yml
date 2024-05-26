@@ -1,0 +1,11 @@
+- name: Install prerequisite packages for SLURM
+  hosts: slurm_nodes
+  become: yes
+
+  roles:
+    - prereqs
+    - { role: munge, tasks_from: install_munge.yml }
+    - { role: munge, tasks_from: start_munge.yml }
+    - { role: munge, tasks_from: test_munge.yml }
+    - { role: mariadb, tasks_from: install_mariadb.yml }
+    - { role: mariadb, tasks_from: start_mysql.yml }
