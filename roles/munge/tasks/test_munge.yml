@@ -1,0 +1,8 @@
+- name: Run create and validate MUNGE credential
+    shell: munge -n | unmunge | grep STATUS
+    register: munge_test
+
+- name: Check MUNGE output
+  debug:
+    msg: "{{ munge_test.stdout }}"
+  failed_when: "'Success' not in munge_test.stdout"
