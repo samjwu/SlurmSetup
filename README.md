@@ -11,5 +11,5 @@ pipx install --include-deps ansible
 ## Usage
 
 ```shell
-ansible-playbook -i staging.ini install.yml
+ansible-playbook -i staging.ini main_roles.yml
 ```
