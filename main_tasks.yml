@@ -12,6 +12,9 @@
     - name: Start MUNGE
       include_tasks: roles/munge/start_munge.yml
 
+    - name: Create MUNGE key
+      include_tasks: roles/munge/create_munge_key.yml
+
     - name: Test MUNGE
       include_tasks: roles/munge/test_munge.yml
 

@@ -6,6 +6,7 @@
     - prereqs
     - { role: munge, tasks_from: install_munge.yml }
     - { role: munge, tasks_from: start_munge.yml }
+    - { role: munge, tasks_from: create_munge_key.yml }
     - { role: munge, tasks_from: test_munge.yml }
     - { role: mariadb, tasks_from: install_mariadb.yml }
     - { role: mariadb, tasks_from: start_mysql.yml }
