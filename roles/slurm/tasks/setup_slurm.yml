@@ -1,0 +1,15 @@
+- name: Create cluster in SLURM
+  shell: sacctmgr add cluster compute-cluster
+  become: true
+
+- name: Create account in SLURM
+  shell: sacctmgr add account compute-account description="Compute accounts" Organization={{ user_organization }}
+  become: true
+
+- name: Create user in SLURM
+  shell: sacctmgr create user {{ user_name }} account=compute-account adminlevel=None
+  become: true
+
+- name: Check cluster status
+  shell: sinfo
+  become: true
