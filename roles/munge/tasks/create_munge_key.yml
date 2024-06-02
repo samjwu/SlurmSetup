@@ -1,0 +1,4 @@
+- name: Create MUNGE key
+  shell: create-munge-key
+  args:
+    creates: /etc/munge/munge.key
