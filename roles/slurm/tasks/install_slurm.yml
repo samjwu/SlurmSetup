@@ -1,0 +1,34 @@
+- name: Make directory for SLURM install
+  shell: mkdir -p /storage
+
+- name: Download SLURM tarball
+  shell: |
+    wget https://download.schedmd.com/slurm/slurm-{{ slurm_version }}.tar.bz2 -P /storage
+    tar xvjf /storage/slurm-{{ slurm_version }}.tar.bz2 -C /storage
+
+- name: Configure SLURM
+  shell: |
+    cd /storage/slurm-{{ slurm_version }}
+    ./configure --prefix=/tmp/slurm-build --sysconfdir=/etc/slurm --enable-pam --with-pam_dir=/lib/x86_64-linux-gnu/security/ --without-shared-libslurm
+
+- name: Build and install SLURM
+  shell: |
+    cd /storage/slurm-{{ slurm_version }}
+    make
+    make contrib
+    make install
+
+- name: Package SLURM
+  shell: fpm -s dir -t deb -v 1.0 -n slurm-{{ slurm_version }} --prefix=/usr -C /tmp/slurm-build .
+
+- name: Install SLURM package
+  shell: dpkg -i /tmp/slurm-build/slurm-{{ slurm_version }}_1.0_amd64.deb
+
+- name: Create slurm user on OS
+  shell: useradd slurm
+
+- name: Create SLURM directories
+  shell: mkdir -p /etc/slurm /etc/slurm/prolog.d /etc/slurm/epilog.d /var/spool/slurm/ctld /var/spool/slurm/d /var/log/slurm
+
+- name: Set SLURM directory permissions
+  shell: chown slurm /var/spool/slurm/ctld /var/spool/slurm/d /var/log/slurm
