@@ -1,6 +1,6 @@
-- name: Create SLURM database and user
+- name: Create SLURM database and user on MySQL
   shell: |
-    mysql -u root -p'{{ mysql_root_password }}' <<EOF
+    mysql -u root <<EOF
     CREATE DATABASE slurm_acct_db;
     SET PASSWORD FOR 'slurm'@'localhost' = PASSWORD('slurmdbpass');
     GRANT USAGE ON *.* TO 'slurm'@'localhost';
