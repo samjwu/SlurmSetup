@@ -20,3 +20,6 @@
 
     - name: Start MySQL
       include_tasks: roles/mariadb/start_mysql.yml
+
+    - name: Create slurm user on MySQL
+      include_tasks: roles/mariadb/create_slurm_user_module.yml

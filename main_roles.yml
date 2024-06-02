@@ -9,3 +9,4 @@
     - { role: munge, tasks_from: test_munge.yml }
     - { role: mariadb, tasks_from: install_mariadb.yml }
     - { role: mariadb, tasks_from: start_mysql.yml }
+    - { role: mariadb, tasks_from: create_slurm_user_module.yml }
