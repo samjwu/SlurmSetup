@@ -1,0 +1,29 @@
+- name: Create SLURM database on MySQL
+  mysql_db:
+    name: slurm_acct_db
+    state: present
+    login_user: root
+
+- name: Create slurm user on MySQL
+  mysql_user:
+    name: slurm
+    host: localhost
+    password: slurmdbpass
+    priv: "slurm_acct_db.*:ALL"
+    state: present
+    login_user: root
+
+- name: Grant usage privileges to slurm user on MySQL
+  mysql_user:
+    name: slurm
+    host: localhost
+    privileges: "USAGE"
+    state: present
+    login_user: root
+    append_privs: yes
+
+- name: Flush privileges in MySQL
+  mysql_db:
+    state: flush_privs
+    login_user: root
+  become: yes
