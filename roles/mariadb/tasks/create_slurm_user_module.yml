@@ -1,6 +1,6 @@
 - name: Create SLURM database on MySQL
   mysql_db:
-    name: slurm_acct_db
+    name: {{ database_name }}
     state: present
     login_user: root
 
@@ -8,8 +8,8 @@
   mysql_user:
     name: slurm
     host: localhost
-    password: slurmdbpass
-    priv: "slurm_acct_db.*:ALL"
+    password: {{ slurm_user_password }}
+    priv: "{{ database_name }}.*:ALL"
     state: present
     login_user: root
 
