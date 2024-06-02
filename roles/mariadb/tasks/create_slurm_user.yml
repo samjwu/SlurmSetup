@@ -7,5 +7,3 @@
     GRANT ALL PRIVILEGES ON slurm_acct_db.* TO 'slurm'@'localhost';
     FLUSH PRIVILEGES;
     EOF
-  args:
-    executable: /bin/bash
