@@ -23,3 +23,6 @@
 
     - name: Create slurm user on MySQL
       include_tasks: roles/mariadb/create_slurm_user_module.yml
+
+    - name: Install SLURM
+      include_tasks: roles/slurm/install_slurm.yml
