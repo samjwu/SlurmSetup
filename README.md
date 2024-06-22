@@ -1,6 +1,6 @@
 # SLURM Setup
 
-Ansible playbooks to set up SLURM
+Ansible playbooks to automate setting up SLURM on controller and compute nodes.
 
 ## Requirements
 
