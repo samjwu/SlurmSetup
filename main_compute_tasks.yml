@@ -1,0 +1,22 @@
+- name: Set up SLURM on compute nodes
+  hosts: compute_nodes
+  become: yes
+
+  tasks:
+    - name: Install SLURM prerequisites
+      include_tasks: roles/prereqs/install_prereqs.yml
+
+    - name: Install MUNGE
+      include_tasks: roles/munge/install_munge.yml
+
+    - name: Start MUNGE
+      include_tasks: roles/munge/start_munge.yml
+
+    - name: Copy MUNGE key
+      include_tasks: roles/munge/copy_munge_key.yml
+
+    - name: Test MUNGE
+      include_tasks: roles/munge/test_munge.yml
+
+    - name: Install SLURM
+      include_tasks: roles/slurm/install_slurm.yml
