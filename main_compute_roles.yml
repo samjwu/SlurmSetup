@@ -9,4 +9,3 @@
     - { role: munge, tasks_from: copy_munge_key.yml }
     - { role: munge, tasks_from: test_munge.yml }
     - { role: slurm, tasks_from: install_slurm.yml }
-    - { role: slurm, tasks_from: setup_slurm.yml }
