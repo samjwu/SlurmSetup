@@ -1,0 +1,15 @@
+- name: Fetch MUNGE key from controller node
+  delegate_to: "{{ groups['controller_node'][0] }}"
+  fetch:
+    src: /etc/munge/munge.key
+    dest: /tmp/
+    flat: yes
+  register: fetch_result
+
+- name: Copy MUNGE key to compute node
+  copy:
+    src: "/tmp/{{ fetch_result.dest | basename }}"
+    dest: /etc/munge/munge.key
+    mode: '0400'
+    owner: munge
+    group: munge

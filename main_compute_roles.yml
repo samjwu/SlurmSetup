@@ -1,0 +1,15 @@
+- name: Set up SLURM on compute nodes
+  hosts: compute_nodes
+  become: yes
+
+  roles:
+    - prereqs
+    - { role: munge, tasks_from: install_munge.yml }
+    - { role: munge, tasks_from: start_munge.yml }
+    - { role: munge, tasks_from: copy_munge_key.yml }
+    - { role: munge, tasks_from: test_munge.yml }
+    - { role: mariadb, tasks_from: install_mariadb.yml }
+    - { role: mariadb, tasks_from: start_mysql.yml }
+    - { role: mariadb, tasks_from: create_slurm_user_module.yml }
+    - { role: slurm, tasks_from: install_slurm.yml }
+    - { role: slurm, tasks_from: setup_slurm.yml }
