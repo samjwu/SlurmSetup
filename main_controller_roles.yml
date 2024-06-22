@@ -12,4 +12,4 @@
     - { role: mariadb, tasks_from: start_mysql.yml }
     - { role: mariadb, tasks_from: create_slurm_user_module.yml }
     - { role: slurm, tasks_from: install_slurm.yml }
-    - { role: slurm, tasks_from: setup_slurm.yml }
+    - { role: slurm, tasks_from: setup_slurm_cluster.yml }

@@ -31,4 +31,4 @@
       include_tasks: roles/slurm/install_slurm.yml
 
     - name: Setup SLURM
-      include_tasks: roles/slurm/setup_slurm.yml
+      include_tasks: roles/slurm/setup_slurm_cluster.yml
