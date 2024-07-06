@@ -2,6 +2,8 @@
 
 Ansible playbooks to automate setting up SLURM on controller and compute nodes.
 
+[SLURM logo](./slurm.png)
+
 ## Requirements
 
 ```shell
