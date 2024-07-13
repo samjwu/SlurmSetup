@@ -7,7 +7,7 @@ Ansible playbooks to automate setting up SLURM on controller and compute nodes.
 ## Requirements
 
 ```shell
-pipx install --include-deps ansible
+pip install ansible
 ```
 
 ## Usage
